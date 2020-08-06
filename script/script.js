@@ -1,19 +1,10 @@
-alert("Hello, Aschot");
+let money;
+let income;
+let addExpenses;
+let deposit;
+let mission;
+let period;
 
+alert("GIT is so hard for understanding");
 
-/* console.log(3);
-console.log(2); */
-
-// Однострочный комментарий Ctrl + |
-
-/* многострочный
-комментарий */
-
-
-
-//console.log('myAge: ', myAge);
-
-{
-   var myAge = 33;
-}
-console.log('myAge: ', myAge);
+console.log('Oh my GIT');
