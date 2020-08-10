@@ -40,5 +40,5 @@ if (budgetDay >= 1200) {
 } else if (budgetDay > 0 && budgetDay < 600) {
    console.log("К сожалению у вас уровень дохода ниже среднего");
 } else {
-   console.log("Что то пошло не так");
+   console.log("Что-то пошло не так");
 };
