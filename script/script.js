@@ -1,9 +1,9 @@
-let money = 300;
-let income = 'Rent';
+const money = 300;
+const income = 'Rent';
 let addExpenses = 'Массаж, Маникюр, Маска';
-let deposit = true;
-let mission = 3000;
-let period = 12;
+const deposit = true;
+const mission = 3000;
+const period = 12;
 
 console.log(typeof money);
 console.log(typeof income);
@@ -15,5 +15,5 @@ console.log('Цель заработать ' + mission + ' монгольски�
 addExpenses = addExpenses.toLowerCase();
 console.log(addExpenses.split(', '));
 
-let budgetDay = money / 30;
+const budgetDay = money / 30;
 console.log(budgetDay);
