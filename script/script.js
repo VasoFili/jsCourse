@@ -1,24 +1,53 @@
+let isNumber = function (n) {
+   return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
 const mission = 300000;
 const income = 'Rent';
 
-let money = +prompt("Ваш месячный доход ?", "50000");
+let money, sum;
 let addExpenses = (prompt("Перечислите возможные расходы за рассчитываемый период через запятую", "Кошка,Собака,Енот")).toLowerCase();
 let deposit = confirm("Есть ли у вас депозит в банке?");
-const expenses1 = prompt("Введите обязательную статью расходов?", "Статья расходов 1");
-const amount1 = +prompt("Во сколько это обойдется?", "10000");
-const expenses2 = prompt("Введите обязательную статью расходов?", "Статья расходов 2");
-const amount2 = +prompt("Во сколько это обойдется?", "10000");
+let expenses1, expenses2;
 
-let getExpensesMonth = function () {
-   return amount1 + amount2;
+let start = function () {
+   do {
+      money = prompt("Ваш месячный доход ?");
+   } while (!isNumber(money))
 };
 
+start();
+
+let getExpensesMonth = function () {
+   let sum = 0;
+   for (let i = 0; i < 2; i++) {
+
+      if (i === 0) {
+         expenses1 = prompt("Введите обязательную статью расходов?", "Статья расходов 1");
+      } else if (i === 1) {
+         expenses2 = prompt("Введите обязательную статью расходов?", "Статья расходов 2");
+      };
+      do {
+         sum = +prompt("Во сколько это обойдется?");
+      } while (!isNumber(sum))
+      sum += sum;
+   };
+   return sum;
+};
+
+let expensesAmount = getExpensesMonth();
+
 let getAccumulatedMonth = function () {
-   return (money - getExpensesMonth());
+   //console.log(money - expensesAmount);
+   return (money - expensesAmount);
 };
 
 let getTargetMonth = function () {
-   return Math.ceil(mission / accumulatedMonth);
+   if (Math.ceil(mission / getAccumulatedMonth()) >= 0) {
+      return Math.ceil(mission / getAccumulatedMonth());
+   } else {
+      return "Цель не будет достигнута";
+   };
 };
 
 let showTypeOF = function (data) {
@@ -40,12 +69,11 @@ let getStatusIncome = function () {
 let accumulatedMonth = getAccumulatedMonth();
 let budgetDay = Math.floor(accumulatedMonth / 30);
 
-
 console.log(showTypeOF(money));
 console.log(showTypeOF(income));
 console.log(showTypeOF(deposit));
 
-console.log('getExpensesMonth: ', getExpensesMonth());
+console.log('expensesAmount: ', expensesAmount);
 console.log('addExpenses: ', addExpenses.split(","));
 console.log('getTargetMonth: ', getTargetMonth());
 console.log("Бюджет на день: ", budgetDay);
