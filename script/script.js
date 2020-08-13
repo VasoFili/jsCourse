@@ -19,7 +19,7 @@ let start = function () {
 start();
 
 let getExpensesMonth = function () {
-   let sum = 0;
+   let totalSum = 0;
    for (let i = 0; i < 2; i++) {
 
       if (i === 0) {
@@ -28,11 +28,11 @@ let getExpensesMonth = function () {
          expenses2 = prompt("Введите обязательную статью расходов?", "Статья расходов 2");
       };
       do {
-         sum = +prompt("Во сколько это обойдется?");
+         sum = prompt("Во сколько это обойдется?");
       } while (!isNumber(sum))
-      sum += sum;
+      totalSum = totalSum + Number(sum);
    };
-   return sum;
+   return totalSum;
 };
 
 let expensesAmount = getExpensesMonth();
