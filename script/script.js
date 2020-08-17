@@ -1,6 +1,8 @@
-let isNumber = function (n) {
+const isNumber = function (n) {
    return !isNaN(parseFloat(n)) && isFinite(n);
 };
+
+
 
 let money;
 const start = function () {
@@ -17,6 +19,8 @@ let appData = {
    expenses: {},
    addExpenses: [],
    deposit: false,
+   percentDeposit: 0,
+   moneyDeposit: 0,
    mission: 300000,
    period: 3,
    budgetMonth: 0,
@@ -25,7 +29,14 @@ let appData = {
    targetMonth: 0,
    budgetDay: 0,
    asking: function () {
-      const addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую", "Кошка,Собака,Енот");
+
+      if (confirm("Есть ли у вас дополнительный заработок?")) {
+         let itemIncome = prompt("Какой у вас дополнительный заработок?", "Массаж");
+         let cashIncome = prompt("Сколько в месяц вы зарабатываете на этом?", 10000);
+         appData.income[itemIncome] = cashIncome;
+      }
+
+      let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую", "Кошка,Собака,Енот");
       appData.addExpenses = addExpenses.toLowerCase().split(',');
       appData.deposit = confirm("Есть ли у вас депозит в банке?");
 
@@ -70,6 +81,15 @@ let appData = {
          return ("Что-то пошло не так");
       };
    },
+   getInfoDeposit: function () {
+      if (appData.deposit) {
+         appData.percentDeposit = prompt("Какой годовой процент?", 10);
+         appData.moneyDeposit = prompt("Какая сумма заложена?", 10000);
+      }
+   },
+   calcSavedMoney: function () {
+      return appData.budgetMonth * appData.period;
+   }
 };
 
 appData.asking();
