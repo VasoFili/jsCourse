@@ -3,7 +3,7 @@ let isNumber = function (n) {
 };
 
 let money;
-let start = function () {
+const start = function () {
    do {
       money = prompt("Ваш месячный доход ?");
    } while (!isNumber(money))
@@ -25,7 +25,7 @@ let appData = {
    targetMonth: 0,
    budgetDay: 0,
    asking: function () {
-      let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую", "Кошка,Собака,Енот");
+      const addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую", "Кошка,Собака,Енот");
       appData.addExpenses = addExpenses.toLowerCase().split(',');
       appData.deposit = confirm("Есть ли у вас депозит в банке?");
 
