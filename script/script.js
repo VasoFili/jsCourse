@@ -33,7 +33,7 @@ let appData = {
          let cashIncome;
          do {
             itemIncome = prompt("Какой у вас дополнительный заработок?", "Массаж");
-         } while (isNumber(itemIncome))
+         } while (isNumber(itemIncome) || itemIncome.trim() === '' || itemIncome === null)
          do {
             cashIncome = prompt("Сколько в месяц вы зарабатываете на этом?", 10000);
          } while (!isNumber(cashIncome))
@@ -56,7 +56,7 @@ let appData = {
          if (i < 2) {
             do {
                expensesI = prompt("Введите обязательную статью расходов?", "Статья расходов 1");
-            } while (isNumber(expensesI))
+            } while (isNumber(expensesI) || expensesI.trim() === '' || expensesI === null)
          };
          do {
             sum = prompt("Во сколько это обойдется?");
